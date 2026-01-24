@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student OD Application</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f9; padding: 20px; }
+        .container { max-width: 500px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: auto; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background: #007bff; color: white; padding: 10px 15px; border: none; cursor: pointer; width: 100%; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>OD Application Form</h2>
+        <form action="/submit" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="roll_no" placeholder="Roll Number" required>
+            
+            <input type="date" name="date" required>
+            <textarea name="reason" placeholder="Write your reason in detail..." rows="5" required></textarea>
+            <button type="submit">Submit to HOD</button>
+        </form>
+    </div>
+</body>
+</html>
