@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OD Verification Portal</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; background-color: #f4f4f9; }
+        .result { 
+            max-width: 400px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+        h1 { color: #333; }
+        p { font-size: 1.1em; color: #555; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="result">
+        <h1>Verification Result</h1>
+        <hr>
+        <p><strong>Name:</strong> {{ student_name }}</p>
+        <p><strong>Roll No:</strong> {{ roll_no }}</p>
+        <p><strong>Status:</strong> {{ status }}</p>
+        
+        {% if status == "Approved" %}
+            <p style="color: green; font-weight: bold;">✅ VALID OD</p>
+        {% else %}
+            <p style="color: red; font-weight: bold;">❌ INVALID / PENDING</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; padding: 20px; }
+        .wrapper { max-width: 800px; margin: auto; background: white; padding: 25px; border-radius: 12px; }
+        .header { display: flex; justify-content: space-between; border-bottom: 2px solid #eee; margin-bottom: 20px; padding-bottom: 10px; }
+        .apply-btn { background: #28a745; color: white; padding: 10px; text-decoration: none; border-radius: 5px; }
+        .od-item { border: 1px solid #eee; margin-bottom: 10px; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .status { font-weight: bold; padding: 5px; border-radius: 4px; }
+        .dl-btn { background: #007bff; color: white; padding: 6px; text-decoration: none; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div>
+                <h2>Dashboard</h2>
+                <p>User: {{ current_user.username }}</p>
+            </div>
+            <a href="/apply" class="apply-btn">Apply OD</a>
+        </div>
+
+        <h3>Your Applications</h3>
+
+        {# BLOCK 1: Show list if data exists #}
+        {% if requests %}
+            {% for req in requests %}
+            <div class="od-item">
+                <div>
+                    <strong>{{ req.summary }}</strong><br>
+                    <small>Date: {{ req.od_date }}</small>
+                </div>
+                <div>
+                    {% if req.status == 'Approved' %}
+                        <span class="status" style="color: green;">Approved</span>
+                        <a href="/download/{{ req.id }}" class="dl-btn">Download</a>
+                    {% endif %}
+                    
+                    {% if req.status == 'pending' %}
+                        <span class="status" style="color: orange;">Pending</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        {# BLOCK 2: Show message if NO data exists #}
+        {% if not requests %}
+            <p style="text-align: center; color: #999;">No applications found.</p>
+        {% endif %}
+
+        <br>
+        <a href="/logout" style="color: red;">Logout</a>
+    </div>
+</body>
+</html>
